@@ -65,7 +65,7 @@ make
 - 在模块定义里定义了 `Py_mod_multiple_interpreters`
 - 这个槽文档里写的是 `3.12` 版本后才有
 
-所以在 `3.11` 下这行会直接 `error`，解决方法是用 `PythonAPI` 自带的宏（自己翻出来的...），代码协程：
+所以在 `3.11` 下这行会直接 `error`，解决方法是用 `PythonAPI` 自带的宏（自己翻出来的...），代码写成：
 
 ``` c
 #if PY_MAJOR_VERSION > 3 || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 12)
