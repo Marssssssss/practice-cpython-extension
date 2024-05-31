@@ -2,7 +2,7 @@
 
 基于 `cpython` 进行的生成。
 
-### 静态编入 Python 解释器
+## 静态编入 Python 解释器
 1. 将 `cqueuemodule.c` 文件放到 `cpython` 的 `Modules` 目录下
 2. 到 `PC` 目录下，配置 `config.c` 文件，指明需要预先初始化的模块（内置），代码如下：
 
@@ -22,7 +22,7 @@ struct _inittab _PyImport_Inittab[] = {
 3. `Visual Studio` 打开 `PCBuild` 解决方案，生成即可
     1. 也可以选择用 `PCbuild` 下面的 `build.bat` 生成 
 
-### 动态链接库导出
+## 动态链接库导出
 看了下最方便的方法是借助 `setuptools` 来生成，两个步骤：
 
 - 编写 `setup.py` 脚本，如目录里提供的
@@ -33,7 +33,7 @@ pip install setuptools
 python setup.py build
 ```
 
-### Linux 下的生成
+## Linux 下的生成
 改法同上，动态链接库导出同上，静态编译方式略有改动：
 
 #### 静态编译解释器
@@ -58,7 +58,7 @@ make
 # 这里编译可能会出现 ssl 版本问题，会导致 ssl 库编不出来，但不影响解释器正常使用，如果需要 ssl 的话可以自行编一个对应版本的 openssl
 ```
 
-### 版本相关的适配
+## 版本相关的适配
 编译碰到的另一个问题是版本的问题，本来用 `3.12` 版本就不用关心这个适配，心血来潮想想要不适配个看看。
 具体问题就是：
 
@@ -73,5 +73,5 @@ make
 #endif
 ```
 
-### 简单 benchmark 做个对比
+## 简单 benchmark 做个对比
 -- TODO
