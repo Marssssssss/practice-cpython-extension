@@ -100,7 +100,7 @@ notes: windows python3.12
 ## Linux 下的结果
 note: wsl2 debian12 python3.11
 
-``` bash
+``` cmd
 ============== python queue ================
 [push and pop] 1.3344090000000002ms
 [pop every 100 push] 6.65787ms
@@ -119,7 +119,7 @@ ps：测这个的时候还炸出一个引用计数的问题 -。-，和 Py_None 
 #define Py_RETURN_NONE return Py_None
 ```
 
-我的函数里面直接 `return Py_None` 这种写法其实是错的，对于 `3.12` 版本来说是可以，但是再之前的版本就不行了，因为 `Py_None` 永生的特性是 `3.12` 才引入的。
+我的函数里面直接 `return Py_None` 这种写法其实是错的，对于 `3.12` 版本来说是可以，但是再之前的版本就不行了，因为 `Py_None` 永生的特性是 `3.12` 才引入的，这之前要返回 `Py_None` 的话得给他加一引用计数。
 
 正确的写法是用 PythonAPI 提供的宏 `PY_RETURN_NONE`。
 
