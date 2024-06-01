@@ -16,7 +16,7 @@ pop(Queue* self, PyObject* args)
         return NULL;
     }
     if (size == 0) {
-        return Py_None;
+        Py_RETURN_NONE;
     }
     PyObject* head = PyList_GetItem(list, 0);
     if (!head) {
@@ -40,7 +40,7 @@ push(Queue* self, PyObject* args)
     if (PyList_Append(list, obj) < 0) {
         return NULL;
     }
-    return Py_None;
+    Py_RETURN_NONE;
 }
 
 static PyObject*
